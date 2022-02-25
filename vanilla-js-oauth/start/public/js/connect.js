@@ -1,7 +1,7 @@
 let linkTokenData;
 
 const initializeLink = async function () {
-  const linkTokenResponse = await fetch(`/api/create-link-token`);
+  const linkTokenResponse = await fetch(`/api/create_link_token`);
   linkTokenData = await linkTokenResponse.json();
   document.querySelector("#startLink").classList.remove("opacity-50");
   console.log(JSON.stringify(linkTokenData));
@@ -34,7 +34,7 @@ const startLink = function () {
 };
 
 async function exchangeToken(publicToken) {
-  const tokenExchangeResponse = await fetch(`/api/exchange-public-token`, {
+  const tokenExchangeResponse = await fetch(`/api/exchange_public_token`, {
     method: "POST",
     headers: { "Content-type": "application/json" },
     body: JSON.stringify({ public_token: publicToken }),

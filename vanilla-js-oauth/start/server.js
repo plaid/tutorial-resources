@@ -45,7 +45,7 @@ const client = new PlaidApi(config);
 
 // Checks whether or not the user has an access token for a financial
 // institution
-app.get("/api/is-user-connected", async (req, res, next) => {
+app.get("/api/is_user_connected", async (req, res, next) => {
   console.log(`Our access token: ${req.session.access_token}`);
   return req.session.access_token
     ? res.json({ status: true })
@@ -53,7 +53,7 @@ app.get("/api/is-user-connected", async (req, res, next) => {
 });
 
 // Retrieves the name of the bank that we're connected to
-app.get("/api/get-bank-name", async (req, res, next) => {
+app.get("/api/get_bank_name", async (req, res, next) => {
   const access_token = req.session.access_token;
   const itemResponse = await client.itemGet({ access_token });
   const configs = {
@@ -67,7 +67,7 @@ app.get("/api/get-bank-name", async (req, res, next) => {
 });
 
 //Creates a Link token and returns it
-app.get("/api/create-link-token", async (req, res, next) => {
+app.get("/api/create_link_token", async (req, res, next) => {
   const tokenResponse = await client.linkTokenCreate({
     user: { client_user_id: req.sessionID },
     client_name: "Vanilla JavaScript Sample",
@@ -81,7 +81,7 @@ app.get("/api/create-link-token", async (req, res, next) => {
 });
 
 // Exchanges the public token from Plaid Link for an access token
-app.post("/api/exchange-public-token", async (req, res, next) => {
+app.post("/api/exchange_public_token", async (req, res, next) => {
   const exchangeResponse = await client.itemPublicTokenExchange({
     public_token: req.body.public_token,
   });
