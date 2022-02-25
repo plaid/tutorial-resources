@@ -1,6 +1,6 @@
 const checkConnectedStatus = async function () {
   try {
-    const connectedResponse = await fetch(`/api/is-user-connected`);
+    const connectedResponse = await fetch(`/api/is_user_connected`);
     const connectedData = await connectedResponse.json();
     console.log(JSON.stringify(connectedData));
     if (connectedData.status === true) {
@@ -15,7 +15,7 @@ const checkConnectedStatus = async function () {
 };
 
 const showInstitutionName = async function () {
-  const bankData = await fetch("/api/get-bank-name");
+  const bankData = await fetch("/api/get_bank_name");
   const bankJSON = await bankData.json();
   console.log(JSON.stringify(bankJSON));
   document.querySelector(
