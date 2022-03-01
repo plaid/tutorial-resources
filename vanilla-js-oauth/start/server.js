@@ -61,7 +61,7 @@ app.get("/api/get_bank_name", async (req, res, next) => {
     country_codes: ["US"],
   };
   const instResponse = await client.institutionsGetById(configs);
-  // console.log(`Institution Info: ${JSON.stringify(instResponse.data)}`);
+  console.log(`Institution Info: ${JSON.stringify(instResponse.data)}`);
   const bankName = instResponse.data.institution.name;
   res.json({ name: bankName });
 });
@@ -106,10 +106,6 @@ app.get("/api/transactions", async (req, res, next) => {
     end_date: endDate,
     options: { count: 10 },
   });
-  console.log(
-    `Transaction response: ${JSON.stringify(transactionResponse.data)}`
-  );
-
   res.json(transactionResponse.data);
 });
 
