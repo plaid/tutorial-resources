@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Welcome!</title>
+  </head>
+  <body class="m-5 text-center">
+    <div class="m-5 font-semibold">Welcome!</div>
+    <div id="disconnectedUI" class="hidden">
+      Say, you should
+      <a class="underline" href="connect.html">connect to your bank</a> to
+      continue.
+    </div>
+    <div class="m-5 hidden" id="connectedUI">
+      <span id="connectDetails">You're connected!</span> But if you want to
+      create another connection,
+      <a class="underline" href="connect.html">go here</a>.
+      <br />
+      <a
+        class="bg-blue-600 text-white rounded-lg p-5 inline-block drop-shadow-md m-5"
+        href="#"
+        id="getTransactions"
+        >Get transactions!</a
+      >
+    </div>
+    <div class="m-5" id="output"></div>
+    <script src="js/index.js"></script>
+  </body>
+</html>
