@@ -2,7 +2,7 @@
 
 ### Overview
 
-This is a starter app that is to be used with the Getting Started with OAuth and JavaScript [YouTube tutorial](https://www.youtube.com/). It implements a very basic version of a Plaid-powered application using HTML/VanillaJS on the front end, and NodeJS/Express on the backend.
+This is a starter app that is to be used with the Getting Started with OAuth and JavaScript [YouTube tutorial](https://www.youtube.com/watch?v=E0GwNBFVGik). It implements a very basic version of a Plaid-powered application using HTML/VanillaJS on the front end, and NodeJS/Express on the backend.
 
 ### Running the app
 
