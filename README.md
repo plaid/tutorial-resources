@@ -3,7 +3,7 @@
 This repo contains starter apps, samples, and other resources that you may need to use alongside some of the tutorials provided by Plaid. They are not intended to be used as standalone samples. Please see the [Quickstart](https://github.com/plaid/quickstart), the [Tiny Quickstart](https://github.com/plaid/tiny-quickstart), or the [Plaid Pattern](https://github.com/plaid/pattern) samples if you're looking for working sample apps.
 
 ## Contents
-* [`/vanilla-js-oauth`](https://github.com/plaid/tutorial-resources/tree/main/vanilla-js-oauth) -- A sample application to be used alongside the Plaid OAuth and JavaScript screencast. 
+* [`/vanilla-js-oauth`](https://github.com/plaid/tutorial-resources/tree/main/vanilla-js-oauth) -- A sample application to be used alongside the [Plaid OAuth and JavaScript](https://www.youtube.com/watch?v=E0GwNBFVGik) screencast. 
 
 ## How to use this repository
 
