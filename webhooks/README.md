@@ -33,7 +33,7 @@ npm install
 Copy the included **.env.example** to a file called **.env**.
 
 ```bash
-cp .env.example .env
+cp .env.template .env
 ```
 
 Fill out the contents of the **.env** file with the [client ID and Sandbox secret in your Plaid dashboard](https://dashboard.plaid.com/team/keys). Don't place quotes around the credentials. Use the "Sandbox" secret when setting the `PLAID_SECRET` variable.

@@ -88,9 +88,6 @@ const callMyServer = async function (
 const handleServerError = async function (responseObject) {
   const error = await responseObject.json();
   console.error("I received an error ", error);
-  if (error.error_code === "ITEM_LOGIN_REQUIRED") {
-    document.querySelector("#credentialsError").classList.remove("hidden");
-  }
 };
 
 document.querySelector("#getBalances").addEventListener("click", getBalances);
