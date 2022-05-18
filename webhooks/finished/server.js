@@ -19,7 +19,7 @@ const FIELD_ACCESS_TOKEN = "accessToken";
 const FIELD_USER_STATUS = "userStatus";
 
 let webhookUrl =
-  process.env.WEBHOOK_URL || "https://www.example.com/plaid_webhook";
+  process.env.WEBHOOK_URL || "https://www.example.com/server/plaid_webhook";
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
