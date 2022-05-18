@@ -1,6 +1,8 @@
+import { checkConnectedStatus } from "./index.js";
+
 let linkTokenData;
 
-const initializeLink = async function () {
+export const initializeLink = async function () {
   const linkTokenResponse = await fetch("/server/generate_link_token", {
     method: "POST",
   });
@@ -45,9 +47,7 @@ async function exchangeToken(publicToken) {
   // errors.
   const tokenExchangeData = await tokenExchangeResponse.json();
   console.log("Done exchanging our token");
-  window.location.href = "index.html";
+  await checkConnectedStatus();
 }
 
 document.querySelector("#startLink").addEventListener("click", startLink);
-
-initializeLink();

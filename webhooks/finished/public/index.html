@@ -14,12 +14,11 @@
 <body>
   <div class="container w-75 pt-5">
     <h2>Welcome!</h2>
-    <div id="disconnectedUI" class="invisible">
-      Say, you should
-      <a href="connect.html">connect to your bank</a> to
-      continue.
+    <div id="disconnectedUI" class="d-none">
+      <p>Say, you should connect to your bank to continue.</p>
+      <button type="button" class="btn btn-primary btn-md opacity-50 mt-3" id="startLink">Connect my bank</button>
     </div>
-    <div id="connectedUI" class="invisible">
+    <div id="connectedUI" class="d-none">
       <h4 id="connectDetails">You're connected!</h4>
       <div class="row mt-3 border-2 text-center">
         <div class="col-sm">
@@ -72,7 +71,8 @@
     crossorigin="anonymous"></script>
 
   <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
-  <script src="js/index.js"></script>
+  <script type="module" src="js/index.js"></script>
+  <script type="module" src="js/connect.js"></script>
 </body>
 
 </html>

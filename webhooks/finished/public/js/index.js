@@ -1,11 +1,16 @@
+import { initializeLink } from "./connect.js";
+
 let accountNames = {};
 
-const checkConnectedStatus = async function () {
+export const checkConnectedStatus = async function () {
   const connectedData = await callMyServer("/server/get_user_info");
   if (connectedData.user_status === "connected") {
-    document.querySelector("#connectedUI").classList.remove("invisible");
+    document.querySelector("#connectedUI").classList.remove("d-none");
+    document.querySelector("#disconnectedUI").classList.add("d-none");
   } else {
-    document.querySelector("#disconnectedUI").classList.remove("invisible");
+    document.querySelector("#disconnectedUI").classList.remove("d-none");
+    document.querySelector("#connectedUI").classList.add("d-none");
+    initializeLink();
   }
 };
 
