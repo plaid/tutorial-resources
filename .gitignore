@@ -105,3 +105,6 @@ dist
 
 # VSCode settings (usually altered for screencasting purposes)
 .vscode/
+
+# User settings
+user_data.json
