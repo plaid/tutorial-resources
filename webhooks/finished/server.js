@@ -53,6 +53,10 @@ const getUserRecord = async function () {
     console.log(`Retrieved userData ${userData}`);
     return userDataObj;
   } catch (error) {
+    if (error.code === "ENOENT") {
+      console.log("No user object found. We'll make one from scratch.");
+      return null;
+    }
     // Might happen first time, if file doesn't exist
     console.log("Got an error", error);
     return null;
@@ -296,57 +300,20 @@ webhookApp.post("/server/plaid_webhook", async (req, res, next) => {
       console.log("Webhook looks good!");
       const product = req.body.webhook_type;
       const code = req.body.webhook_code;
-      if (product === "ITEM") {
-        if (code === "ERROR") {
-          console.log(
-            `I received this error: ${req.body.error.error_message}| should probably ask this user to connect to their bank`
-          );
-        } else if (code === "NEW_ACCOUNTS_AVAILABLE") {
-          console.log(
-            `There are new accounts available at this Financial Institution! (Id:   ${req.body.item_id}) We might want to ask the user to share them with us`
-          );
-        } else if (code === "PENDING_EXPIRATION") {
-          console.log(
-            `We should tell our user to reconnect their bank with Plaid so there's no disruption to their service`
-          );
-        } else if (code === "USER_PERMISSION_REVOKED") {
-          console.log(
-            `The user revoked access to this item. We should remove it from our records`
-          );
-        } else if (code === "WEBHOOK_UPDATE_ACKNOWLEDGED") {
-          console.log(`Hooray! You found the right spot!`);
-        }
-      } else if (product === "ASSETS") {
-        if (code === "PRODUCT_READY") {
-          console.log(
-            `Looks like asset report ${req.body.asset_report_id} is ready to download`
-          );
-        } else if (code === "ERROR") {
-          console.log(
-            `I had an error generating this report: ${req.body.error.error_message}`
-          );
-        }
-      } else if (product === "TRANSACTIONS") {
-        // Most of these aren't needed if you use the new sync API!
-        if (code === "INITIAL_UPDATE") {
-          console.log(
-            `First patch of transactions are done. There's ${req.body.new_transactions} available`
-          );
-        } else if (code === "HISTORICAL_UPDATE") {
-          console.log(
-            `Historical transactions are done. There's ${req.body.new_transactions} available`
-          );
-        } else if (code === "DEFAULT_UPDATE") {
-          console.log(
-            `New data is here! There's ${req.body.new_transactions} available`
-          );
-        } else if (code === "TRANSACTIONS_REMOVED") {
-          console.log(
-            `Looks like a few transactions have been reversed and should be removed from our records`
-          );
-        }
+      switch (product) {
+        case "ITEM":
+          handleItemWebhook(code, req.body);
+          break;
+        case "ASSETS":
+          handleAssetsWebhook(code, req.body);
+          break;
+        case "TRANSACTIONS":
+          handleTransactionsWebhook(code, req.body);
+          break;
+        default:
+          console.log(`Can't handle webhook product ${product}`);
+          break;
       }
-
       res.json({ status: "received" });
     } else {
       console.log("Webhook didn't pass verification!");
@@ -356,6 +323,60 @@ webhookApp.post("/server/plaid_webhook", async (req, res, next) => {
     next(error);
   }
 });
+
+function handleTransactionsWebhook(code, requestBody) {
+  if (code === "INITIAL_UPDATE") {
+    console.log(
+      `First patch of transactions are done. There's ${requestBody.new_transactions} available`
+    );
+  } else if (code === "HISTORICAL_UPDATE") {
+    console.log(
+      `Historical transactions are done. There's ${requestBody.new_transactions} available`
+    );
+  } else if (code === "DEFAULT_UPDATE") {
+    console.log(
+      `New data is here! There's ${requestBody.new_transactions} available`
+    );
+  } else if (code === "TRANSACTIONS_REMOVED") {
+    console.log(
+      `Looks like a few transactions have been reversed and should be removed from our records`
+    );
+  }
+}
+
+function handleAssetsWebhook(code, requestBody) {
+  if (code === "PRODUCT_READY") {
+    console.log(
+      `Looks like asset report ${requestBody.asset_report_id} is ready to download`
+    );
+  } else if (code === "ERROR") {
+    console.log(
+      `I had an error generating this report: ${requestBody.error.error_message}`
+    );
+  }
+}
+
+function handleItemWebhook(code, requestBody) {
+  if (code === "ERROR") {
+    console.log(
+      `I received this error: ${requestBody.error.error_message}| should probably ask this user to connect to their bank`
+    );
+  } else if (code === "NEW_ACCOUNTS_AVAILABLE") {
+    console.log(
+      `There are new accounts available at this Financial Institution! (Id:   ${requestBody.item_id}) We might want to ask the user to share them with us`
+    );
+  } else if (code === "PENDING_EXPIRATION") {
+    console.log(
+      `We should tell our user to reconnect their bank with Plaid so there's no disruption to their service`
+    );
+  } else if (code === "USER_PERMISSION_REVOKED") {
+    console.log(
+      `The user revoked access to this item. We should remove it from our records`
+    );
+  } else if (code === "WEBHOOK_UPDATE_ACKNOWLEDGED") {
+    console.log(`Hooray! You found the right spot!`);
+  }
+}
 
 const verifyWebhook = async (req) => {
   const verbose = false;
