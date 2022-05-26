@@ -65,8 +65,13 @@ const fireTestWebhook = async function () {
 };
 
 const updateWebhook = async function () {
+  const newWebhookUrl = document.querySelector("#webhookInput").value;
+  if (!newWebhookUrl.startsWith("https://")) {
+    console.log("How about a real URL here?");
+    return false;
+  }
   await callMyServer("/server/update_webhook", true, {
-    newUrl: document.querySelector("#webhookInput").value,
+    newUrl: newWebhookUrl,
   });
 };
 
