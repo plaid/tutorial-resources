@@ -61,18 +61,18 @@ function displaySimplifiedData(simplifiedData) {
 }
 
 const fireTestWebhook = async function () {
-  callMyServer("/server/fire_test_webhook", true);
+  // TODO: FIll this out
 };
 
 const updateWebhook = async function () {
-  const newWebhookUrl = document.querySelector("#webhookInput").value;
-  if (!newWebhookUrl.startsWith("https://")) {
-    alert("How about a real URL here?");
-    return false;
-  }
-  await callMyServer("/server/update_webhook", true, {
-    newUrl: newWebhookUrl,
-  });
+  // const newWebhookUrl = document.querySelector("#webhookInput").value;
+  // if (!newWebhookUrl.startsWith("https://")) {
+  //   alert("How about a real URL here?");
+  //   return false;
+  // }
+  // await callMyServer("/server/update_webhook", true, {
+  //   newUrl: newWebhookUrl,
+  // });
 };
 
 const callMyServer = async function (

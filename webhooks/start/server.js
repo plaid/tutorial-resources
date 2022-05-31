@@ -210,28 +210,29 @@ app.get("/server/create_asset_report", async (req, res, next) => {
  */
 app.post("/server/fire_test_webhook", async (req, res, next) => {
   try {
-    const fireWebhookResponse = await plaidClient.sandboxItemFireWebhook({
-      access_token: userRecord[FIELD_ACCESS_TOKEN],
-      webhook_type: WebhookType.Item,
-      webhook_code:
-        SandboxItemFireWebhookRequestWebhookCodeEnum.NewAccountsAvailable,
-    });
-    res.json(fireWebhookResponse.data);
+    res.json({ todo: "Implement this feature" });
   } catch (error) {
     next(error);
   }
 });
 
+/**
+ * Tell Plaid to use a new URL for our webhooks
+ */
 app.post("/server/update_webhook", async (req, res, next) => {
   try {
-    webhookUrl = req.body.newUrl;
-    // I might need to loop this over every Item I have
-    const accessToken = userRecord[FIELD_ACCESS_TOKEN];
-    const updateResponse = await plaidClient.itemWebhookUpdate({
-      access_token: accessToken,
-      webhook: webhookUrl,
-    });
-    res.json(updateResponse.data);
+    res.json({ todo: "Implement this feature" });
+  } catch (error) {
+    next(error);
+  }
+});
+
+/**
+ * We've received a webhook! We should probably so something with it.
+ */
+app.post("/server/receive_webhook", async (req, res, next) => {
+  try {
+    res.json({ todo: "Implement this feature" });
   } catch (error) {
     next(error);
   }
@@ -250,25 +251,3 @@ const errorHandler = function (err, req, res, next) {
   }
 };
 app.use(errorHandler);
-
-const webhookApp = express();
-webhookApp.use(bodyParser.urlencoded({ extended: false }));
-webhookApp.use(bodyParser.json());
-
-const WEBHOOK_PORT = 8001;
-
-const webhookServer = webhookApp.listen(WEBHOOK_PORT, function () {
-  console.log(`Webhook server is at http://localhost:${WEBHOOK_PORT}/`);
-});
-
-webhookApp.post("/server/receive_webhook", async (req, res, next) => {
-  try {
-    console.log(`This is what I received:`);
-    console.dir(req.body, { colors: true, depth: null });
-    res.json({ status: "received" });
-  } catch (error) {
-    next(error);
-  }
-});
-
-webhookApp.use(errorHandler);
