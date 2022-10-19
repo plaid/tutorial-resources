@@ -1,0 +1,1 @@
+Files to store our user records will go here in lieu of a database.
