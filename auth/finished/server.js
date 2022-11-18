@@ -146,10 +146,8 @@ app.post("/server/generate_link_token", async (req, res, next) => {
       ...basicLinkTokenObject,
       products: ["auth"],
       auth: {
-        instant_match_enabled: true,
         automated_microdeposits_enabled: true,
         same_day_microdeposits_enabled: true,
-        auth_type_select_enabled: true,
       },
     };
     const tokenResponse = await plaidClient.linkTokenCreate(linkTokenObject);
@@ -202,11 +200,11 @@ const fetchAccountId = async function (access_token) {
  * This will store the user's Auth status based on calling accountsGet
  */
 const refreshAuthStatus = async function (access_token) {
-  const accountResult = await plaidClient.accountsGet({
+  const accountsResult = await plaidClient.accountsGet({
     access_token: access_token,
   });
 
-  const accountToAnalyze = accountResult.data.accounts.find(
+  const accountToAnalyze = accountsResult.data.accounts.find(
     (acct) => acct.account_id === userRecord[FIELD_ACCOUNT_ID]
   );
 
@@ -268,12 +266,12 @@ app.get("/server/auth", async (req, res, next) => {
     // the information in the 'accounts' array.
     const simplifiedData = authData.numbers.ach.map((achInfo) => {
       return {
-        name: authData.accounts.find(
-          (act) => act.account_id === achInfo.account_id
-        ).name,
         account_number: achInfo.account,
         routing_number: achInfo.routing,
         internal_account_id: achInfo.account_id,
+        name: authData.accounts.find(
+          (acct) => acct.account_id === achInfo.account_id
+        ).name,
       };
     });
     res.json(simplifiedData[0]);
