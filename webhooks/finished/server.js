@@ -406,30 +406,76 @@ function handleItemWebhook(code, requestBody) {
   }
 }
 
+// Cache for webhook validation keys.
+const KEY_CACHE = new Map();
+
 const verifyWebhook = async (req) => {
-  const verbose = false;
+  const verbose = true;
+  const body = req.body;
+  const headers = req.headers;
   try {
-    const signedJwt = req.headers["plaid-verification"];
+    const signedJwt = headers["plaid-verification"];
     const decodedToken = jwt_decode(signedJwt);
     // Extract the JWT header
     const decodedTokenHeader = jwt_decode(signedJwt, { header: true });
     // Extract the kid value from the header
+    const currentKeyID = decodedTokenHeader.kid;
     verbose &&
       console.log(
         `Your token is ${JSON.stringify(
           decodedToken
         )} with headers ${JSON.stringify(decodedTokenHeader)}`
       );
-    const currentKeyID = decodedTokenHeader.kid;
     verbose && console.log(`Key ID is ${currentKeyID}`);
-    const keyResponse = await plaidClient.webhookVerificationKeyGet({
-      key_id: currentKeyID,
-    });
-    verbose &&
-      console.log(`Your key from Plaid is ${JSON.stringify(keyResponse.data)}`);
+    //If key not in cache, update the key cache
+    if (!KEY_CACHE.has(currentKeyID)) {
+      const keyIDsToUpdate = [];
+      KEY_CACHE.forEach((keyID, key) => {
+        if (key.expired_at == null) {
+          keyIDsToUpdate.push(keyID);
+        }
+      });
+
+      keyIDsToUpdate.push(currentKeyID);
+
+      for (const keyID of keyIDsToUpdate) {
+        const response = await plaidClient
+          .webhookVerificationKeyGet({
+            key_id: keyID,
+          })
+          .catch((err) => {
+            // decide how you want to handle unexpected API errors,
+            // e.g. retry later
+            return false;
+          });
+        verbose &&
+          console.log(
+            `Received this response ${JSON.stringify(
+              response.data
+            )} for key ${keyID}`
+          );
+        const key = response.data.key;
+        KEY_CACHE.set(keyID, key);
+      }
+    } else {
+      verbose && console.log("Cache hit!");
+    }
+
+    // If the key ID is not in the cache, the key ID may be invalid.
+    if (!KEY_CACHE.has(currentKeyID)) {
+      return false;
+    }
+
+    // Fetch the current key from the cache.
+    const key = KEY_CACHE.get(currentKeyID);
+
+    // Reject expired keys.
+    if (key.expired_at != null) {
+      return false;
+    }
+    verbose && console.log(`Your key from Plaid is ${JSON.stringify(key)}`);
     // TODO: Cache this so that I don't need to call this every time we receive
     // a webhook.
-    const key = keyResponse.data["key"];
     const keyLike = await JWT.importJWK(key);
     const { payload } = await JWT.jwtVerify(signedJwt, keyLike, {
       maxTokenAge: "5 min",
