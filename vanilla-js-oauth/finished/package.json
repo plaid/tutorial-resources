@@ -16,6 +16,6 @@
     "express": "^4.17.2",
     "express-session": "^1.17.2",
     "moment": "^2.29.4",
-    "plaid": "^9.10.1"
+    "plaid": "^9.12.0"
   }
 }
