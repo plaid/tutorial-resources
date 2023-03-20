@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+  <title>Where'd My Money Go?</title>
+</head>
+
+<body>
+  <div class="container w-75 pt-5">
+    <h3>Where'd My Money Go?</h3>
+    <p>Let's see how you spent your money!</p>
+    <div id="notSignedIn" class="d-none d-flex justify-content-evenly align-items-stretch">
+      <div class="d-flex flex-column gap-2 border border-3 rounded p-3">
+        <h4>Create an account!</h4>
+        <label for="#username">Account username</label><input placeholder="JoeTest" id="username" />
+        <button type="button" class="btn btn-primary" id="createAccount">Create account!</button>
+      </div>
+      <div id="existingUsers" class="d-flex flex-column gap-2  border border-3 rounded p-3">
+        <h4>Sign in!</h4>
+        Or, sign in as one of these users:
+        <select id="existingUsersSelect"></select>
+        <button type="button" class="btn btn-primary" id="signIn">Sign in!</button>
+      </div>
+    </div>
+    <div id="signedIn" class="d-none  w-75 border border-3 rounded p-3 mx-auto">
+      <p id="welcomeMessage">Welcome back!</p>
+
+      <div>
+        <p id="banksMsg"></p>
+        <button type="button" class="btn btn-primary button-md my-2" id="connectToBank">Connect my
+          bank!</button>
+      </div>
+      <div>
+        <p id="statusMsg">Looking up your transactions</p>
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th class="text-end">Amount</th>
+              <th>Account</th>
+            </tr>
+          </thead>
+          <tbody id="transactionTable"></tbody>
+        </table>
+        <div class="w-75 border border-1 p-2 rounded-2" id="deubgCalls">
+          <p>Debug calls:</p>
+          <button type="button" class="btn btn-outline-secondary button-md my-2" id="serverRefresh">Server
+            refresh</button>
+          <button type="button" class="btn btn-outline-secondary button-md my-2" id="clientRefresh">Client-side
+            refresh</button>
+          <button type="button" class="btn btn-outline-secondary button-md my-2" id="generateWebhook">Generate a
+            webhook</button>
+          <div>
+            <select id="deactivateBankSelect"></select>
+            <button type="button" class="btn btn-warning button-md my-2" id="deactivateBank">Stop using this
+              bank</button>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-danger my-3" id="signOut">Sign out</button>
+      <div id="output"></div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+  <script type="module" src="js/client.js"></script>
+
+</body>
+
+</html>

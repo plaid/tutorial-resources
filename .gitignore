@@ -108,3 +108,4 @@ dist
 
 # User settings
 user_data.json
+.prettierrc
