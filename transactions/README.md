@@ -2,7 +2,7 @@
 
 ### Overview
 
-This is a starter app that is to be used with the Getting Started with Plaid Transactions [YouTube tutorial](https://www.youtube.com/). It implements a very basic personal finance app using `/transactions/sync` to retrieve and update the user's transaction data. This application uses HTML/VanillaJS on the front end, and NodeJS/Express on the backend, alongside a SQLite database.
+This is a starter app that is to be used with the Getting Started with Plaid Transactions [YouTube tutorial](https://youtu.be/Pin0-ceDKcI). It implements a very basic personal finance app using `/transactions/sync` to retrieve and update the user's transaction data. This application uses HTML/VanillaJS on the front end, and NodeJS/Express on the backend, alongside a SQLite database.
 
 ### Running the app
 
@@ -61,3 +61,7 @@ npm run watch
 ```
 
 The server will start running on port 8000 and will update whenever you make a change to the server files. To use the app, navigate to `localhost:8000` in your browser.
+
+#### Problems?
+
+On some occasions (usually if the app fails to start up properly the first time), you will end up in a state where the database file has been created, but none of the tables have been added. This usually manifests as a `SQLITE_ERROR: no such table: users` error. If you receive this error, you can fix it by deleting the `appdata.db` file in your `database` folder and then restarting the server.
