@@ -2,7 +2,7 @@
 
 ### Overview
 
-This is a starter app that is to be used with the Getting Started with Plaid Transactions [YouTube tutorial](https://www.youtube.com/). It implements a very basic personal finance app using /transactions/sync to retrieve and update the user's transaction data. This application uses HTML/VanillaJS on the front end, and NodeJS/Express on the backend, alongside a SQLite database.
+This is a starter app that is to be used with the Getting Started with Plaid Transactions [YouTube tutorial](https://www.youtube.com/). It implements a very basic personal finance app using `/transactions/sync` to retrieve and update the user's transaction data. This application uses HTML/VanillaJS on the front end, and NodeJS/Express on the backend, alongside a SQLite database.
 
 ### Running the app
 
