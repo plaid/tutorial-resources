@@ -48,7 +48,7 @@ A common way to do this is to use a tool like ngrok. If you have ngrok installed
 ngrok http 8001
 ```
 
-And ngrok will open a tunnel from the outside world to port 8001 on your machine. Update the WEBHOOK_URL with the domain that ngrok has generated. Your final URL should look something like `https://abde-123-4-567-8.ngrok.io/server/receive_webhook`
+And ngrok will open a tunnel from the outside world to port 8001 on your machine. Update the `WEBHOOK_URL` with the domain that ngrok has generated. Your final URL should look something like `https://abde-123-4-567-8.ngrok.io/server/receive_webhook`
 
 See the [Plaid Webhooks Tutorial](https://www.youtube.com/watch?v=0E0KEAVeDyc) for a full description of webhooks and how they work.
 
