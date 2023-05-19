@@ -108,3 +108,8 @@ dist
 
 # User settings
 user_data.json
+.prettierrc
+
+# We don't want to save our database in git if we're storing 
+# access tokens in there
+appdata.db
