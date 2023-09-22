@@ -1,0 +1,30 @@
+{
+  "name": "ios-server",
+  "version": "1.0.0",
+  "description": "Basic server to use for our iOS sample app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "user_files/*"
+    ],
+    "watch": [
+      "*.js",
+      ".env"
+    ]
+  },
+  "author": "Todd Kerpelman",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "moment": "^2.29.4",
+    "nodemon": "^3.0.1",
+    "plaid": "^15.4.0"
+  }
+}
