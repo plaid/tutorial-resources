@@ -74,7 +74,6 @@ app.post("/server/generate_link_token", async (req, res, next) => {
       language: "en",
       products: ["auth"],
       webhook: "https://sample-webhook-uri.com",
-      redirect_uri: "https://example.com/plaid/redirect/index.html",
     });
     const data = createTokenResponse.data;
     console.log("createTokenResponse", data);
