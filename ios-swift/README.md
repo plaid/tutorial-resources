@@ -2,7 +2,7 @@
 
 ### Overview
 
-This is a starter app that is intended to be used with the Getting Started with iOS [YouTube tutorial](https://www.youtube.com/). It implements a very basic app that allows a user to connect to their bank via Plaid, and then makes a simple call to /auth/get to retrieve the user's routing number. This application uses Swift on the front end, and NodeJS/Express on the backend.
+This is a starter app that is intended to be used with the Getting Started with iOS [YouTube tutorial](https://www.youtube.com/watch?v=9fgmW38usTo). It implements a very basic app that allows a user to connect to their bank via Plaid, and then makes a simple call to /auth/get to retrieve the user's routing number. This application uses Swift on the front end, and NodeJS/Express on the backend.
 
 ### Running the app
 
