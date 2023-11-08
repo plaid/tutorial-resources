@@ -7,6 +7,7 @@ This repo contains starter apps, samples, and other resources that you may need 
 * [`/webhooks`](https://github.com/plaid/tutorial-resources/tree/main/webhooks) -- A sample application to be used alongside the [Plaid Webhooks](https://www.youtube.com/watch?v=0E0KEAVeDyc) tutorial. 
 * [`/auth`](https://github.com/plaid/tutorial-resources/tree/main/auth) -- A sample application to be used alongside the [Plaid Auth](https://www.youtube.com/watch?v=FlZ5nzlIq74) screencast.
 * [`/transactions`](https://github.com/plaid/tutorial-resources/tree/main/transactions) -- A sample application to be used alongside the [Plaid Transactions](https://www.youtube.com/watch?v=hBiKJ6vTa4g) screencast. 
+* [`/ios-swift](https://github.com/plaid/tutorial-resources/tree/main/ios-swift) -- A sample application to be used alongside the [Plaid on iOS Tutorial](https://www.youtube.com/watch?v=9fgmW38usTo). 
 
 ## How to use this repository
 
