@@ -1,6 +1,6 @@
 "use strict";
 require("dotenv").config();
-const fs = require("fs/promises");
+const fs = require("fs.promises");
 const express = require("express");
 const bodyParser = require("body-parser");
 const moment = require("moment");
@@ -241,7 +241,7 @@ app.post("/server/receive_webhook", async (req, res, next) => {
 const errorHandler = function (err, req, res, next) {
   console.error(`Your error:`);
   console.error(err);
-  if (err.response?.data != null) {
+  if (err.response != null && err.response.data != null) {
     res.status(500).send(err.response.data);
   } else {
     res.status(500).send({
