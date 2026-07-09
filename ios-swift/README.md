@@ -18,7 +18,7 @@ git clone https://github.com/plaid/tutorial-resources && cd ios/start
 
 ### Set up your server
 
-The server is designed to be used with Node 16 or higher. For information on installing Node, see [How to install Node.js](https://nodejs.dev/learn/how-to-install-nodejs), and consider using [nvm](https://github.com/nvm-sh/nvm) to easily switch between Node versions.
+The server is designed to be used with Node 16 or higher. For information on installing Node, see [How to install Node.js](https://nodejs.org/en/download), and consider using [nvm](https://github.com/nvm-sh/nvm) to easily switch between Node versions.
 
 #### Move into your server directory
 
