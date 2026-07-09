@@ -18,7 +18,7 @@ git clone https://github.com/plaid/tutorial-resources && cd webhooks/start/
 
 #### Set up your environment
 
-This app uses the latest stable version of Node. At the time of this writing, that's v16.14.2. It's recommended you use a similar version of Node to run the app. For information on installing Node, see [How to install Node.js](https://nodejs.dev/learn/how-to-install-nodejs), and consider using [nvm](https://github.com/nvm-sh/nvm) to easily switch between Node versions.
+This app uses the latest stable version of Node. At the time of this writing, that's v16.14.2. It's recommended you use a similar version of Node to run the app. For information on installing Node, see [How to install Node.js](https://nodejs.org/en/download), and consider using [nvm](https://github.com/nvm-sh/nvm) to easily switch between Node versions.
 
 #### Install dependencies
 
