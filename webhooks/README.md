@@ -30,7 +30,7 @@ npm install
 
 #### Equip the app with credentials
 
-Copy the included **.env.example** to a file called **.env**.
+Copy the included **.env.template** to a file called **.env**.
 
 ```bash
 cp .env.template .env
