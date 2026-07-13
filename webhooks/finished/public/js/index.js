@@ -42,6 +42,8 @@ const getTransactions = async function () {
     return {
       date: t.date,
       vendor: t.name,
+      // NOTE: `category` still works but is deprecated; a production app would use
+      // `personal_finance_category` instead.
       category: t.category[0],
       amount: `$${t.amount.toFixed(2)}`,
     };

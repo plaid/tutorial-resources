@@ -32,6 +32,8 @@ const getTransactions = async function () {
       date: item.date,
       name: item.name,
       amount: `$${item.amount.toFixed(2)}`,
+      // NOTE: `category` still works but is deprecated; a production app would use
+      // `personal_finance_category` instead.
       categories: item.category.join(", "),
     };
   });

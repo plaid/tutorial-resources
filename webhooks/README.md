@@ -4,6 +4,8 @@
 
 This is a starter app that is to be used with the Plaid and Webhooks [YouTube tutorial](https://www.youtube.com/watch?v=0E0KEAVeDyc). It implements a very basic version of a Plaid-powered application using HTML/VanillaJS on the front end, and NodeJS/Express on the backend.
 
+> **Note:** This sample works and correctly demonstrates how to receive and handle Plaid webhooks — that's the concept it's teaching. For simplicity it fetches transactions with the legacy `/transactions/get` endpoint and the legacy transactions webhooks (`INITIAL_UPDATE` / `HISTORICAL_UPDATE` / `DEFAULT_UPDATE` / `TRANSACTIONS_REMOVED`). In a production app you would instead use [`/transactions/sync`](https://plaid.com/docs/transactions/sync-migration/) with the `SYNC_UPDATES_AVAILABLE` webhook — see the [`transactions`](../transactions) sample and the [Transactions Sync video](https://youtu.be/Pin0-ceDKcI).
+
 ### Running the app
 
 If you want the most complete instructions for running the app, please follow along with the video tutorial linked above.
