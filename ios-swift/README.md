@@ -13,7 +13,7 @@ If you want the most complete instructions for running the app, please follow al
 Clone the tutorial resources repo to your machine and cd into the project's start directory:
 
 ```bash
-git clone https://github.com/plaid/tutorial-resources && cd ios/start
+git clone https://github.com/plaid/tutorial-resources && cd tutorial-resources/ios-swift/start
 ```
 
 ### Set up your server
