@@ -155,9 +155,9 @@ app.get("/server/transactions", async (req, res, next) => {
     const startDate = moment().subtract(30, "days").format("YYYY-MM-DD");
     const endDate = moment().format("YYYY-MM-DD");
 
-    // NOTE: /transactions/get is legacy. New apps should use /transactions/sync — see
-    // ../../transactions, https://youtu.be/Pin0-ceDKcI, and
-    // https://plaid.com/docs/transactions/sync-migration/
+    // NOTE: this works fine for the tutorial, but /transactions/get is legacy. In a production
+    // app you would fetch transactions with /transactions/sync instead — see ../../transactions,
+    // https://youtu.be/Pin0-ceDKcI, and https://plaid.com/docs/transactions/sync-migration/
     const transactionResponse = await plaidClient.transactionsGet({
       access_token: access_token,
       start_date: startDate,
@@ -327,9 +327,10 @@ webhookApp.post("/server/receive_webhook", async (req, res, next) => {
   }
 });
 
-// NOTE: INITIAL_UPDATE / HISTORICAL_UPDATE / DEFAULT_UPDATE / TRANSACTIONS_REMOVED are legacy
-// transactions webhooks. New apps should use /transactions/sync and the SYNC_UPDATES_AVAILABLE
-// webhook instead. See https://plaid.com/docs/transactions/sync-migration/
+// NOTE: these legacy transactions webhooks (INITIAL_UPDATE / HISTORICAL_UPDATE / DEFAULT_UPDATE /
+// TRANSACTIONS_REMOVED) still fire and are fine for demonstrating webhook handling here. In a
+// production app you would use /transactions/sync with the SYNC_UPDATES_AVAILABLE webhook instead.
+// See https://plaid.com/docs/transactions/sync-migration/
 function handleTransactionsWebhook(code, requestBody) {
   switch (code) {
     case "INITIAL_UPDATE":

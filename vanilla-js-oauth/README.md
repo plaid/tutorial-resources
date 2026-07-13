@@ -4,7 +4,7 @@
 
 This is a starter app that is to be used with the Getting Started with OAuth and JavaScript [YouTube tutorial](https://www.youtube.com/watch?v=E0GwNBFVGik). It implements a very basic version of a Plaid-powered application using HTML/VanillaJS on the front end, and NodeJS/Express on the backend.
 
-> **Note:** This sample fetches transactions with the legacy `/transactions/get` endpoint and the deprecated `category` field. New apps should use [`/transactions/sync`](https://plaid.com/docs/transactions/sync-migration/) with `personal_finance_category` — see the [`transactions`](../transactions) sample and the [Transactions Sync video](https://youtu.be/Pin0-ceDKcI).
+> **Note:** This sample works and correctly demonstrates the OAuth flow — that's the concept it's teaching. For simplicity it fetches transactions with the legacy `/transactions/get` endpoint and the deprecated `category` field. In a production app you would instead use [`/transactions/sync`](https://plaid.com/docs/transactions/sync-migration/) with `personal_finance_category` — see the [`transactions`](../transactions) sample and the [Transactions Sync video](https://youtu.be/Pin0-ceDKcI).
 
 ### Running the app
 

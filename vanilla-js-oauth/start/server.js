@@ -100,9 +100,9 @@ app.get("/api/transactions", async (req, res, next) => {
   const startDate = moment().subtract(30, "days").format("YYYY-MM-DD");
   const endDate = moment().format("YYYY-MM-DD");
 
-  // NOTE: /transactions/get is legacy. New apps should use /transactions/sync — see
-  // ../../transactions, https://youtu.be/Pin0-ceDKcI, and
-  // https://plaid.com/docs/transactions/sync-migration/
+  // NOTE: this works fine for the tutorial, but /transactions/get is legacy. In a production
+  // app you would fetch transactions with /transactions/sync instead — see ../../transactions,
+  // https://youtu.be/Pin0-ceDKcI, and https://plaid.com/docs/transactions/sync-migration/
   const transactionResponse = await client.transactionsGet({
     access_token: access_token,
     start_date: startDate,

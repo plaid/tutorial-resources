@@ -42,7 +42,8 @@ const getTransactions = async function () {
     return {
       date: t.date,
       vendor: t.name,
-      // NOTE: `category` is deprecated; prefer `personal_finance_category` (/transactions/sync).
+      // NOTE: `category` still works but is deprecated; a production app would use
+      // `personal_finance_category` (returned by /transactions/sync) instead.
       category: t.category[0],
       amount: `$${t.amount.toFixed(2)}`,
     };
