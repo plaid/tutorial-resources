@@ -33,7 +33,7 @@ const getTransactions = async function () {
       name: item.name,
       amount: `$${item.amount.toFixed(2)}`,
       // NOTE: `category` still works but is deprecated; a production app would use
-      // `personal_finance_category` (returned by /transactions/sync) instead.
+      // `personal_finance_category` instead.
       categories: item.category.join(", "),
     };
   });
