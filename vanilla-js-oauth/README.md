@@ -15,12 +15,12 @@ If you want the most complete instructions for running the app, please follow al
 Clone the tutorial resources repo to your machine and cd into the project's start directory:
 
 ```bash
-git clone https://github.com/plaid/tutorial-resources && cd vanilla-js-oauth/start/
+git clone https://github.com/plaid/tutorial-resources && cd tutorial-resources/vanilla-js-oauth/start/
 ```
 
 #### Set up your environment
 
-This app uses the latest stable version of Node. At the time of this writing, that's v16.14.0. It's recommended you use a similar version of Node to run the app. For information on installing Node, see [How to install Node.js](https://nodejs.org/en/download), and consider using [nvm](https://github.com/nvm-sh/nvm) to easily switch between Node versions.
+This app is designed to be used with Node 16 or higher. For information on installing Node, see [How to install Node.js](https://nodejs.org/en/download), and consider using [nvm](https://github.com/nvm-sh/nvm) to easily switch between Node versions.
 
 #### Install dependencies
 
