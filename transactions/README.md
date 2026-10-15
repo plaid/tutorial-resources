@@ -13,7 +13,7 @@ If you want the most complete instructions for running the app, please follow al
 Clone the tutorial resources repo to your machine and cd into the project's start directory:
 
 ```bash
-git clone https://github.com/plaid/tutorial-resources && cd transactions/start
+git clone https://github.com/plaid/tutorial-resources && cd tutorial-resources/transactions/start
 ```
 
 #### Set up your environment
@@ -64,9 +64,9 @@ The server will start running on port 8000 and will update whenever you make a c
 
 #### Sandbox test credentials
 
-Use `user_transactions_dynamic` as the username, and any non-blank string as the password. You can call `/transactions/refresh` to simulate a transactions update in Sandbox. This will generate new pending transactions, all previously pending transactions will be moved to posted, and the amount of one previous transaction will be incremented by $1.00. All appropriate transaction webhooks will also be fired at this time.
+Use `user_transactions_dynamic` as the username, and any non-blank string as the password. You can call `/transactions/refresh` to simulate a transactions update in Sandbox. This generates new pending transactions, moves previously pending transactions to posted, and adds any newly scheduled recurring transactions. All appropriate transaction webhooks will also be fired at this time.
 
-You can also use the standard `user_good` / `pass_good` credentials, but the transactions data will be less realistic, and you won't be able to simulate updates. 
+You can also use the standard `user_good` / `pass_good` credentials, but the transactions data will be less realistic, and `/transactions/refresh` won't generate new activity. 
 
 #### Problems?
 
